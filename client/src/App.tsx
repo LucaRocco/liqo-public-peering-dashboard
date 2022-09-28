@@ -7,6 +7,12 @@ import './App.css';
 import LiqoNavbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import ClusterList from './components/clusterComponent/ClusterList';
+import ReactGA from 'react-ga';
+
+if ((window as any)._env_.GOOGLE_ANALYTICS_TRACKING_ID) {
+  ReactGA.initialize((window as any)._env_.GOOGLE_ANALYTICS_TRACKING_ID);
+  ReactGA.pageview('/');
+}
 
 export interface IStatus {
   refresh: boolean;

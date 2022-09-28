@@ -1,1 +1,1 @@
-# Liqo Dashboard Server
+# Liqo Peering Dashboard Server

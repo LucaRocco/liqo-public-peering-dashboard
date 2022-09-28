@@ -3,11 +3,11 @@
 # Declare variables to be passed into your templates.
 
 # -- Define a host for the ingress. It must match with the TLS certificate's host if present
-host: "*"
+host: ""
 
 image:
   # -- Pull polocy for dashboard pods
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # -- Tag to get other versions of the image
   tag: "0.5"
 
@@ -16,7 +16,7 @@ tls:
   secretName: ""
 
 backend:
-  # -- Backend dashboard image name  
+  # -- Backend dashboard image name
   imageName: lucarocco97/liqo-dashboard-backend
   # -- Server's port
   port: 8080
@@ -30,6 +30,8 @@ backend:
     type: ClusterIP
 
 frontend:
+  # -- Google Analytics traking ID. It enables simple GA metrics such as number of visits
+  gaTrackingID: ""
   # -- Frontend dashboard image name
   imageName: lucarocco97/liqo-dashboard-frontend
   # -- Frontend port

@@ -1,4 +1,4 @@
-# Liqo Peering Dasboard Chart
+# Liqo Peering Dashboard Chart
 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5](https://img.shields.io/badge/AppVersion-0.5-informational?style=flat-square)
 
@@ -11,13 +11,14 @@
 | backend.port | int | `8080` | Server's port |
 | backend.replicas | int | `1` | Number of replicas of backend's pods |
 | backend.service.type | string | `"ClusterIP"` | Type of service. A ClusterIP service is enough because we are using an ingress |
+| frontend.gaTrackingID | string | `""` | Google Analytics traking ID. It enables simple GA metrics such as number of visits |
 | frontend.imageName | string | `"lucarocco97/liqo-dashboard-frontend"` | Frontend dashboard image name |
 | frontend.ingress.annotations | object | `{}` | Frontend ingress' annotations |
 | frontend.port | int | `8080` | Frontend port |
 | frontend.replicas | int | `1` | Number of replicas of frontend's pods |
 | frontend.service.type | string | `"ClusterIP"` | Type of service. A ClusterIP service is enough because we are using an ingress |
 | host | string | `""` | Define a host for the ingress. It must match with the TLS certificate's host if present |
-| image.pullPolicy | string | `"Always"` | Pull polocy for dashboard pods |
+| image.pullPolicy | string | `"IfNotPresent"` | Pull polocy for dashboard pods |
 | image.tag | string | `"0.5"` | Tag to get other versions of the image |
 | tls.secretName | string | `""` | Name of the secret which contains the TLS certificate |
 

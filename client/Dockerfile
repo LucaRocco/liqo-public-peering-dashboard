@@ -17,8 +17,12 @@ RUN npm run build
 # Final image to export the service
 FROM nginx:1.19
 
+WORKDIR /usr/share/nginx/html
+
 ## Copy the different files
-COPY --chown=nginx:nginx --from=builder /tmp/frontend/build/. /usr/share/nginx/html
+COPY --chown=nginx:nginx --from=builder /tmp/frontend/build/. .
+COPY --chown=nginx:nginx .env .
+COPY --chown=nginx:nginx serve.sh .
 COPY --chown=nginx:nginx default.conf /etc/nginx/conf.d/default.conf
 
 ## Add permissions for the nginx user
@@ -29,4 +33,4 @@ RUN chown -R nginx:nginx /usr/share/nginx/html && \
     touch /var/run/nginx.pid && \
     chown -R nginx:nginx /var/run/nginx.pid
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["./serve.sh"]
